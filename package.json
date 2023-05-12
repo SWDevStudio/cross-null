@@ -1,4 +1,7 @@
 {
+  "scripts": {
+    "start": "yarn parcel src/index.html"
+  },
   "devDependencies": {
     "@parcel/transformer-sass": "2.8.3",
     "jest": "^29.5.0",
