@@ -5,7 +5,7 @@ import {Matrix} from "./Matrix";
 export type CrossFieldMarker = FIELD_MARKER | ''
 type CrossNullMatrix = Array<Array<CrossFieldMarker>>
 export class CrossNullCore {
-  private currentMarker: FIELD_MARKER = FIELD_MARKER.X
+  currentMarker: FIELD_MARKER = FIELD_MARKER.X
 
   field: CrossNullMatrix = [
     ['', '', ''],
