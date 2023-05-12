@@ -48,6 +48,17 @@ export class CrossNullCore {
     return false
   }
 
+  get isHaveFullField(): boolean {
+    for (let line of this.field) {
+      for (let marker of line) {
+        if (!marker) {
+          return false
+        }
+      }
+    }
+    return true
+  }
+
   private _checkDiagonals(matrix: CrossNullMatrix): boolean {
     const mainDiagonal = Matrix.getDiagonal(matrix, 'main')
     if (mainDiagonal.every(val => val && val === mainDiagonal[0]))

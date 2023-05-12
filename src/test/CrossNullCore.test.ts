@@ -74,4 +74,20 @@ describe('CrossNullCore', () => {
       expect(crossNullCore.checkWin()).toBe(true)
     })
   })
+
+  describe('isHaveFullField', () => {
+    it('Метод вернет true если все ячейки заполнены', () => {
+      crossNullCore.field.forEach(line => {
+        for (let i = 0; i < line.length; i++) {
+          line[i] = FIELD_MARKER.X
+        }
+      })
+
+      expect(crossNullCore.isHaveFullField).toBe(true)
+    })
+
+    it('Метод вернет false если не все ячейки заполнены', () => {
+      expect(crossNullCore.isHaveFullField).toBe(false)
+    })
+  })
 });
