@@ -1,20 +1,13 @@
-enum PLAYERS  {
-    X = 'X',
-    O = 'O'
-}
+import {GameField} from "./components/GameField/GameField";
+import {CrossNullController} from "./class/CrossNullController";
+import {CrossNullCore} from "./class/CrossNullCore";
 
-let currentPlayer = PLAYERS.X
-const filed = document.querySelector('.field')
-const boxes = filed.querySelectorAll('.field__box')
-const userTag = document.querySelector('.menu-user-tag')?.querySelector('span')
-boxes.forEach(i => i.addEventListener('click', onClickBox))
-function onClickBox(event) {
-    if (event.target.innerHTML) return
-    event.target.innerHTML = currentPlayer
-    currentPlayer = currentPlayer === PLAYERS.X ? PLAYERS.O : PLAYERS.X
+// Можно добавить дополнительные настройки
+const crossNullCore = new CrossNullCore()
+const crossNullView = new GameField()
 
-    // Проверить что по определенным координатам не совпало что стоят
-    const fieldSize = 3
-
-    userTag.innerHTML = currentPlayer
-}
+const crossNullController: CrossNullController = new CrossNullController(
+  crossNullCore,
+  crossNullView
+)
+crossNullController.init('.app')
