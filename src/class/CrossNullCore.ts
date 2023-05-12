@@ -19,8 +19,7 @@ export class CrossNullCore {
     if (!this._isEmptyField(x, y)) throw new Error(CROSS_NULL_ERRORS.NOT_WRITABLE)
 
     this.field[x][y] = this.currentMarker
-    const isWin = this._checkWin()
-    if (isWin) this.exit()
+
     this._changeMarker()
   }
 
@@ -32,15 +31,11 @@ export class CrossNullCore {
     this.currentMarker = this.currentMarker === FIELD_MARKER.X ? FIELD_MARKER.O : FIELD_MARKER.X
   }
 
-  public exit(winner?: FIELD_MARKER): void {
-    console.log('Конец игры')
-  }
-
   private _isEmptyField(x: number, y: number): boolean {
     return Boolean(!this.field[x][y])
   }
 
-  private _checkWin(): boolean {
+  public checkWin(): boolean {
     const line = this._checkLines(this.field)
     if (line) return line
 

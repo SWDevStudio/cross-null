@@ -49,45 +49,29 @@ describe('CrossNullCore', () => {
 
   describe('checkWin', () => {
     it('Работает по горизонтальной линии', () => {
-      const exitMock = jest.spyOn(crossNullCore, 'exit')
-
       crossNullCore.field[0][0] = FIELD_MARKER.X
       crossNullCore.field[0][1] = FIELD_MARKER.X
+      crossNullCore.field[0][2] = FIELD_MARKER.X
 
-      crossNullCore.writeSymbol(0, 2)
-
-      expect(exitMock).toHaveBeenCalled()
-      expect(exitMock).toHaveBeenCalledTimes(1)
-
-      exitMock.mockRestore()
+      expect(crossNullCore.checkWin()).toBe(true)
     })
 
     it('Работает по вертикальной линии', () => {
-      const exitMock = jest.spyOn(crossNullCore, 'exit')
 
       crossNullCore.field[0][0] = FIELD_MARKER.X
       crossNullCore.field[1][0] = FIELD_MARKER.X
+      crossNullCore.field[2][0] = FIELD_MARKER.X
 
       crossNullCore.writeSymbol(2, 0)
-
-      expect(exitMock).toHaveBeenCalled()
-      expect(exitMock).toHaveBeenCalledTimes(1)
-
-      exitMock.mockRestore()
+      expect(crossNullCore.checkWin()).toBe(true)
     })
 
     it('Работает по диагонали', () => {
-      const exitMock = jest.spyOn(crossNullCore, 'exit')
-
       crossNullCore.field[0][0] = FIELD_MARKER.X
       crossNullCore.field[1][1] = FIELD_MARKER.X
+      crossNullCore.field[2][2] = FIELD_MARKER.X
 
-      crossNullCore.writeSymbol(2, 2)
-
-      expect(exitMock).toHaveBeenCalled()
-      expect(exitMock).toHaveBeenCalledTimes(1)
-
-      exitMock.mockRestore()
+      expect(crossNullCore.checkWin()).toBe(true)
     })
   })
 });
